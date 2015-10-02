@@ -8,7 +8,7 @@ function FirefeedUI() {
   this._limit = 141;
   this._loggedIn = false;
   this._spinner = new Spinner();
-  this._firefeed = new Firefeed("https://firefeed.firebaseio.com/");
+  this._firefeed = new Firefeed("https://simplq.firebaseio.com/");//new Firefeed("https://firefeed.firebaseio.com/"); 
   this._unload = null;
 
   // Setup page navigation.
@@ -219,9 +219,11 @@ FirefeedUI.prototype.renderHome = function(e) {
   var loginButton = $("#login-button");
   loginButton.click(function(e) {
     e.preventDefault();
+    console.log('begin');
     loginButton.css("visibility", "hidden");
     self._spinner.spin($("#login-div").get(0));
     self._firefeed.login('facebook');
+    console.log('end');
   });
 
   $("#about-link").remove();
